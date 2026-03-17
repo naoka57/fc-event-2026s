@@ -482,6 +482,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===========================
+   Access Card
+   =========================== */
+.access-card {
+  background: var(--black-card);
+  border: 1px solid var(--border);
+}
+
+.access-card .schedule-timeline {
+  padding-left: 20px;
+}
+
+.access-card .schedule-timeline::before {
+  left: -4px;
+}
+
+.access-card .schedule-item::before {
+  left: -31px;
+}
+
+/* ===========================
    Amenities Section
    =========================== */
 .amenity-card {
