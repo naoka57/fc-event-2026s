@@ -12,7 +12,7 @@ AOS.init({
 // Countdown to event
 // ===========================
 function updateCountdown() {
-  const eventDate = new Date("2026-05-16T13:00:00+09:00");
+  const eventDate = new Date("2026-05-16T08:00:00+09:00");
   const now = new Date();
   const diff = eventDate - now;
   const el = document.getElementById("countdown");
