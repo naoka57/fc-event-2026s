@@ -123,17 +123,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===========================
+   Wi-Fi Bar
+   =========================== */
+.wifi-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040;
+  background: var(--green);
+  color: var(--black);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-align: center;
+  padding: 6px 0;
+}
+
+.wifi-bar strong {
+  font-weight: 700;
+}
+
+.wifi-sep {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+/* ===========================
    Navigation
    =========================== */
 .navbar {
   background-color: transparent;
   transition: all 0.5s ease;
   padding: 24px 0;
+  top: 32px;
 }
 
 .navbar.scrolled {
   background-color: rgba(10, 10, 10, 0.95) !important;
   padding: 14px 0;
+  top: 32px;
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
