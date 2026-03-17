@@ -30,7 +30,6 @@
           <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
           <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
           <li class="nav-item"><a class="nav-link" href="#participants">Participants</a></li>
-          <li class="nav-item"><a class="nav-link" href="#room">Room</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -50,7 +49,8 @@
       <p class="hero-venue-text mt-2">
         LIME RESORT HAKONE — Sengokuhara
       </p>
-      <a href="#about" class="btn btn-primary-custom mt-5"><span>Enter</span></a>
+      <div class="hero-countdown mt-5" id="countdown"></div>
+      <a href="#about" class="btn btn-primary-custom mt-4"><span>Enter</span></a>
     </div>
   </section>
 
@@ -273,6 +273,60 @@
     </div>
   </section>
 
+  <!-- ===== Amenities ===== -->
+  <section id="amenities" class="section-padding bg-dark-section">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-label-heading">// Amenities</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="amenity-card p-4">
+            <h5 class="mb-3"><i class="bi bi-droplet text-green me-2"></i>バスルーム</h5>
+            <ul class="amenity-list">
+              <li>フェイスタオル / バスタオル</li>
+              <li>シャンプー / コンディショナー</li>
+              <li>ボディソープ</li>
+              <li>歯ブラシ / 歯磨き粉</li>
+              <li>ヘアブラシ</li>
+              <li>ドライヤー</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="amenity-card p-4">
+            <h5 class="mb-3"><i class="bi bi-house text-green me-2"></i>客室備品</h5>
+            <ul class="amenity-list">
+              <li>ルームウェア（館内着）</li>
+              <li>スリッパ</li>
+              <li>セーフティボックス</li>
+              <li>TV（40インチ）/ ポータブルスピーカー</li>
+              <li>電気ケトル / マグカップ</li>
+              <li>冷蔵庫</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="amenity-card p-4">
+            <h5 class="mb-3"><i class="bi bi-building text-green me-2"></i>共用施設</h5>
+            <ul class="amenity-list">
+              <li>大浴場（天然温泉・男女別）</li>
+              <li>ラウンジ（暖炉付き）</li>
+              <li>シアター（150インチスクリーン）</li>
+              <li>Wi-Fi（全館）</li>
+              <li>駐車場（25台・無料）</li>
+              <li>コーヒーマシン / ウォーターサーバー</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-4" style="color: var(--text-dim); font-size: 0.82rem;">
+        * パジャマ・着替え・充電器などはご持参ください
+      </p>
+    </div>
+  </section>
+
   <!-- ===== 5. Participants ===== -->
   <section id="participants" class="section-padding bg-surface">
     <div class="container">
@@ -280,141 +334,63 @@
         <h2 class="section-label-heading">// Participants</h2>
         <div class="section-divider mx-auto"></div>
       </div>
-      <div class="row g-4 justify-content-center">
+      <p class="text-center mb-4" style="color: var(--text-dim); font-size: 0.82rem;">* カードをタップすると部屋番号が表示されます</p>
+      <div class="row g-3 justify-content-center">
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">田中 太郎</h6>
-            <p class="small mb-0">QuantumLeap Inc.</p>
-            <p class="small">CEO</p>
+          <div class="participant-card text-center" data-room="201">
+            <h6 class="mb-1">田中 太郎</h6>
+            <p class="small mb-0">QuantumLeap Inc. / CEO</p>
+            <p class="room-reveal small">Room 201</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">鈴木 花子</h6>
-            <p class="small mb-0">BioSynth Labs</p>
-            <p class="small">Co-Founder</p>
+          <div class="participant-card text-center" data-room="203">
+            <h6 class="mb-1">鈴木 花子</h6>
+            <p class="small mb-0">BioSynth Labs / Co-Founder</p>
+            <p class="room-reveal small">Room 203</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">佐藤 健一</h6>
-            <p class="small mb-0">NanoMaterials Co.</p>
-            <p class="small">CTO</p>
+          <div class="participant-card text-center" data-room="201">
+            <h6 class="mb-1">佐藤 健一</h6>
+            <p class="small mb-0">NanoMaterials Co. / CTO</p>
+            <p class="room-reveal small">Room 201</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="250">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">山田 美咲</h6>
-            <p class="small mb-0">SpaceForge</p>
-            <p class="small">Founder</p>
+          <div class="participant-card text-center" data-room="204">
+            <h6 class="mb-1">山田 美咲</h6>
+            <p class="small mb-0">SpaceForge / Founder</p>
+            <p class="room-reveal small">Room 204</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">高橋 亮太</h6>
-            <p class="small mb-0">FusionTech</p>
-            <p class="small">CEO</p>
+          <div class="participant-card text-center" data-room="202">
+            <h6 class="mb-1">高橋 亮太</h6>
+            <p class="small mb-0">FusionTech / CEO</p>
+            <p class="room-reveal small">Room 202</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="350">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">伊藤 沙織</h6>
-            <p class="small mb-0">DeepOcean AI</p>
-            <p class="small">Co-Founder</p>
+          <div class="participant-card text-center" data-room="205">
+            <h6 class="mb-1">伊藤 沙織</h6>
+            <p class="small mb-0">DeepOcean AI / Co-Founder</p>
+            <p class="room-reveal small">Room 205</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">渡辺 大輝</h6>
-            <p class="small mb-0">PhotonX</p>
-            <p class="small">Founder</p>
+          <div class="participant-card text-center" data-room="202">
+            <h6 class="mb-1">渡辺 大輝</h6>
+            <p class="small mb-0">PhotonX / Founder</p>
+            <p class="room-reveal small">Room 202</p>
           </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="450">
-          <div class="participant-card text-center">
-            <div class="participant-img">
-              <i class="bi bi-person"></i>
-            </div>
-            <h6 class="mt-3 mb-1">中村 恵理</h6>
-            <p class="small mb-0">GreenHydrogen</p>
-            <p class="small">CEO</p>
+          <div class="participant-card text-center" data-room="205">
+            <h6 class="mb-1">中村 恵理</h6>
+            <p class="small mb-0">GreenHydrogen / CEO</p>
+            <p class="room-reveal small">Room 205</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 6. Room Assignment ===== -->
-  <section id="room" class="section-padding">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// Room</h2>
-        <div class="section-divider mx-auto"></div>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-          <div class="table-responsive">
-            <table class="table room-table">
-              <thead>
-                <tr>
-                  <th>Room</th>
-                  <th>Type</th>
-                  <th>Guest</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="room-badge">201</span></td>
-                  <td>ツイン</td>
-                  <td>田中 太郎 / 佐藤 健一</td>
-                </tr>
-                <tr>
-                  <td><span class="room-badge">202</span></td>
-                  <td>ツイン</td>
-                  <td>高橋 亮太 / 渡辺 大輝</td>
-                </tr>
-                <tr>
-                  <td><span class="room-badge">203</span></td>
-                  <td>シングル</td>
-                  <td>鈴木 花子</td>
-                </tr>
-                <tr>
-                  <td><span class="room-badge">204</span></td>
-                  <td>シングル</td>
-                  <td>山田 美咲</td>
-                </tr>
-                <tr>
-                  <td><span class="room-badge">205</span></td>
-                  <td>ツイン</td>
-                  <td>伊藤 沙織 / 中村 恵理</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="text-center mt-4" style="color: var(--text-dim); font-size: 0.78rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.5px;">
-            * 部屋の変更希望がある場合は事務局までご連絡ください
-          </p>
         </div>
       </div>
     </div>
@@ -480,6 +456,18 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-drink">
+                  お酒や飲み物の持ち込みはできますか？
+                </button>
+              </h2>
+              <div id="faq-drink" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  お飲み物の持ち込みは無料ですが、グラスの貸し出しは有料となります。事前にグラスの貸し出しご希望をお申し付けください。紙コップなどをご用意いただくことをおすすめします。
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
                   参加費はかかりますか？
                 </button>
@@ -513,7 +501,20 @@
     <div class="container text-center">
       <p class="mb-2 fw-bold">Founders<span class="text-green">Camp</span></p>
       <p class="small mb-3" style="color: var(--text-dim);">Hosted by HERO Impact Capital</p>
-      <p class="small mb-0" style="color: var(--text-dim);">Contact: <a href="mailto:camp@example.com">camp@example.com</a></p>
+      <div class="row justify-content-center mt-4 g-4">
+        <div class="col-auto">
+          <p class="small mb-1" style="color: var(--green);">// Emergency</p>
+          <p class="small mb-0" style="color: var(--text-secondary);">事務局: <a href="tel:090-0000-0000">090-0000-0000</a></p>
+        </div>
+        <div class="col-auto">
+          <p class="small mb-1" style="color: var(--green);">// Contact</p>
+          <p class="small mb-0" style="color: var(--text-secondary);"><a href="mailto:camp@example.com">camp@example.com</a></p>
+        </div>
+        <div class="col-auto">
+          <p class="small mb-1" style="color: var(--green);">// Venue</p>
+          <p class="small mb-0" style="color: var(--text-secondary);">ライムリゾート箱根: <a href="tel:0460-00-0000">0460-00-0000</a></p>
+        </div>
+      </div>
     </div>
   </footer>
 

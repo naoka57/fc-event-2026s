@@ -9,6 +9,36 @@ AOS.init({
 });
 
 // ===========================
+// Countdown to event
+// ===========================
+function updateCountdown() {
+  const eventDate = new Date("2026-05-16T13:00:00+09:00");
+  const now = new Date();
+  const diff = eventDate - now;
+  const el = document.getElementById("countdown");
+  if (!el) return;
+
+  if (diff <= 0) {
+    el.innerHTML = "// EVENT IN PROGRESS";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  el.innerHTML =
+    `<span class="countdown-num">${days}</span><span class="countdown-label">days</span>` +
+    `<span class="countdown-num">${String(hours).padStart(2, "0")}</span><span class="countdown-label">hrs</span>` +
+    `<span class="countdown-num">${String(mins).padStart(2, "0")}</span><span class="countdown-label">min</span>` +
+    `<span class="countdown-num">${String(secs).padStart(2, "0")}</span><span class="countdown-label">sec</span>`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===========================
 // Navbar scroll effect
 // ===========================
 const navbar = document.getElementById("mainNav");
@@ -40,6 +70,15 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
       if (bsCollapse) bsCollapse.hide();
     }
+  });
+});
+
+// ===========================
+// Participant card room reveal
+// ===========================
+document.querySelectorAll(".participant-card[data-room]").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("show-room");
   });
 });
 
