@@ -1,21 +1,24 @@
 /* ===========================
    Variables & Base
    =========================== */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 
 :root {
-  --navy: #1B2A4A;
-  --navy-light: #2a3d5e;
-  --navy-dark: #0f1a30;
+  --black: #0a0a0a;
+  --black-light: #111111;
+  --black-card: #141414;
+  --black-surface: #1a1a1a;
+  --green: #00E676;
+  --green-dim: #00c966;
+  --green-dark: #00a854;
+  --green-glow: rgba(0, 230, 118, 0.15);
+  --green-subtle: rgba(0, 230, 118, 0.06);
   --white: #FFFFFF;
-  --off-white: #FAFAF8;
-  --gold: #C4A35A;
-  --gold-light: #d4b76e;
-  --text-primary: #1a1a1a;
-  --text-secondary: #555;
-  --text-light: #888;
-  --border: #e8e8e6;
-  --bg-section: #F5F4F0;
+  --text-primary: #e0e0e0;
+  --text-secondary: #888;
+  --text-dim: #555;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-green: rgba(0, 230, 118, 0.15);
 }
 
 html {
@@ -25,6 +28,7 @@ html {
 body {
   font-family: "IBM Plex Sans", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: var(--text-primary);
+  background: var(--black);
   overflow-x: hidden;
   font-weight: 400;
   font-size: 15px;
@@ -34,7 +38,7 @@ body {
 }
 
 /* ===========================
-   Typography — Serif headings
+   Typography
    =========================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: "IBM Plex Serif", "Georgia", "Hiragino Mincho ProN", serif;
@@ -42,45 +46,71 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.04em;
 }
 
+/* Mono for labels & accents */
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+
 /* ===========================
    Utility
    =========================== */
-.text-gold {
-  color: var(--gold) !important;
+.text-green {
+  color: var(--green) !important;
 }
 
-.btn-gold {
+.btn-primary-custom {
   background-color: transparent;
-  color: var(--white);
-  border: 1px solid var(--gold);
+  color: var(--green);
+  border: 1px solid var(--green);
   border-radius: 0;
   padding: 14px 48px;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-gold:hover {
-  background-color: var(--gold);
-  color: var(--white);
-  border-color: var(--gold);
+.btn-primary-custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.btn-primary-custom:hover {
+  color: var(--black);
+  border-color: var(--green);
+}
+
+.btn-primary-custom:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-primary-custom span {
+  position: relative;
+  z-index: 1;
 }
 
 .section-padding {
   padding: 120px 0;
 }
 
-.section-title {
-  font-family: "IBM Plex Serif", "Georgia", serif;
-  font-size: 0.75rem;
+.section-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
   font-weight: 500;
-  color: var(--text-light);
-  letter-spacing: 4px;
+  color: var(--green);
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .section-heading {
@@ -95,8 +125,9 @@ h1, h2, h3, h4, h5, h6 {
 .section-divider {
   width: 40px;
   height: 1px;
-  background-color: var(--gold);
+  background-color: var(--green);
   margin-top: 20px;
+  box-shadow: 0 0 8px var(--green-glow);
 }
 
 /* ===========================
@@ -109,58 +140,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.97) !important;
+  background-color: rgba(10, 10, 10, 0.95) !important;
   padding: 14px 0;
-  box-shadow: 0 1px 0 var(--border);
-}
-
-.navbar.scrolled .nav-link {
-  color: var(--text-primary) !important;
-}
-
-.navbar.scrolled .nav-link:hover,
-.navbar.scrolled .nav-link.active {
-  color: var(--gold) !important;
-}
-
-.navbar.scrolled .navbar-brand {
-  color: var(--text-primary) !important;
-}
-
-.navbar.scrolled .navbar-brand .text-gold {
-  color: var(--gold) !important;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
 }
 
 .navbar-brand {
-  font-family: "IBM Plex Serif", serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 2px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--text-primary) !important;
+}
+
+.navbar-brand .text-green {
+  color: var(--green) !important;
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 8px 18px !important;
+  padding: 8px 16px !important;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--gold) !important;
+  color: var(--green) !important;
 }
 
-/* Mobile toggle */
-.navbar.scrolled .navbar-toggler {
-  border-color: var(--text-light);
+.navbar-toggler {
+  border-color: var(--text-dim) !important;
 }
 
-.navbar.scrolled .navbar-toggler-icon {
-  filter: invert(1);
+.navbar-toggler-icon {
+  filter: invert(0.6);
 }
 
 /* ===========================
@@ -168,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
    =========================== */
 .hero-section {
   min-height: 100vh;
-  background: var(--navy);
+  background: var(--black);
   position: relative;
   overflow: hidden;
 }
@@ -176,15 +195,35 @@ h1, h2, h3, h4, h5, h6 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 26, 48, 0.3) 0%, rgba(27, 42, 74, 0.1) 100%);
+  background:
+    radial-gradient(ellipse at 50% 50%, var(--green-subtle) 0%, transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 230, 118, 0.015) 2px,
+      rgba(0, 230, 118, 0.015) 4px
+    );
+}
+
+/* Grid lines */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--border) 1px, transparent 1px),
+    linear-gradient(0deg, var(--border) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.4;
 }
 
 .hero-label {
-  color: var(--gold);
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 5px;
+  color: var(--green);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 6px;
   text-transform: uppercase;
 }
 
@@ -197,24 +236,30 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
 }
 
+.hero-title .accent {
+  color: var(--green);
+  text-shadow: 0 0 40px var(--green-glow);
+}
+
 .hero-divider {
   width: 40px;
   height: 1px;
-  background-color: var(--gold);
+  background-color: var(--green);
+  box-shadow: 0 0 12px var(--green-glow);
 }
 
 .hero-date,
 .hero-venue-text {
-  color: rgba(255, 255, 255, 0.65);
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
+  color: var(--text-dim);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
   font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
   }
 
   .section-heading {
@@ -224,72 +269,73 @@ h1, h2, h3, h4, h5, h6 {
   .section-padding {
     padding: 80px 0;
   }
+
+  .hero-section::before {
+    background-size: 40px 40px;
+  }
 }
 
 /* ===========================
    About Section
    =========================== */
 .about-card {
-  background: var(--white);
+  background: var(--black-card);
   border: 1px solid var(--border);
   border-radius: 0;
-  transition: border-color 0.4s ease;
+  transition: all 0.4s ease;
   height: 100%;
 }
 
 .about-card:hover {
-  border-color: var(--gold);
+  border-color: var(--border-green);
+  box-shadow: 0 0 20px var(--green-subtle);
 }
 
 .about-icon {
-  font-size: 1.8rem;
-  color: var(--gold);
+  font-size: 1.6rem;
+  color: var(--green);
 }
 
 .about-card h5 {
-  font-family: "IBM Plex Serif", serif;
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--text-primary);
+  letter-spacing: 1px;
 }
 
 .about-card p {
   color: var(--text-secondary);
   font-size: 0.85rem;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* ===========================
    Schedule Section
    =========================== */
-.bg-light-navy {
-  background: var(--navy);
-}
-
-.bg-light-navy .section-title {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.bg-light-navy .section-heading {
-  color: var(--white);
+.bg-dark-section {
+  background: var(--black-light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .schedule-tabs .nav-link {
   background: transparent;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: var(--text-dim) !important;
   border-radius: 0;
   padding: 14px 36px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+  border: 1px solid var(--border);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
   transition: all 0.4s ease;
 }
 
 .schedule-tabs .nav-link.active {
   background: transparent !important;
-  color: var(--white) !important;
-  border-color: var(--gold);
+  color: var(--green) !important;
+  border-color: var(--green);
+  box-shadow: 0 0 12px var(--green-subtle);
 }
 
 .schedule-timeline {
@@ -306,7 +352,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(196, 163, 90, 0.3);
+  background: linear-gradient(180deg, var(--green-dim), rgba(0, 230, 118, 0.1));
 }
 
 .schedule-item {
@@ -325,29 +371,30 @@ h1, h2, h3, h4, h5, h6 {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green-glow);
 }
 
 .schedule-time {
   flex-shrink: 0;
   width: 70px;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
-  color: var(--gold);
-  font-size: 0.85rem;
+  color: var(--green);
+  font-size: 0.82rem;
   letter-spacing: 1px;
 }
 
 .schedule-content h5 {
   font-family: "IBM Plex Serif", serif;
-  color: var(--white);
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 4px;
 }
 
 .schedule-content .text-muted {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: var(--text-dim) !important;
   font-size: 0.82rem;
 }
 
@@ -356,14 +403,14 @@ h1, h2, h3, h4, h5, h6 {
    =========================== */
 .venue-image-placeholder,
 .map-placeholder {
-  background: var(--bg-section);
+  background: var(--black-card);
   border: 1px solid var(--border);
   border-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--text-light);
+  color: var(--text-dim);
   min-height: 320px;
   font-size: 0.85rem;
 }
@@ -372,7 +419,8 @@ h1, h2, h3, h4, h5, h6 {
 .map-placeholder i {
   font-size: 2rem;
   margin-bottom: 12px;
-  opacity: 0.4;
+  opacity: 0.3;
+  color: var(--green);
 }
 
 .venue-info li {
@@ -401,33 +449,38 @@ h1, h2, h3, h4, h5, h6 {
 /* ===========================
    Participants Section
    =========================== */
-.bg-light-section {
-  background-color: var(--bg-section);
+.bg-surface {
+  background-color: var(--black-light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .participant-card {
-  background: var(--white);
+  background: var(--black-card);
   border: 1px solid var(--border);
   border-radius: 0;
   padding: 32px 16px;
-  transition: border-color 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .participant-card:hover {
-  border-color: var(--gold);
+  border-color: var(--border-green);
+  box-shadow: 0 0 20px var(--green-subtle);
 }
 
 .participant-img {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: var(--navy);
+  background: var(--black-surface);
+  border: 1px solid var(--border-green);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-size: 2rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.8rem;
+  color: var(--green);
+  opacity: 0.5;
 }
 
 .participant-card h6 {
@@ -438,9 +491,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .participant-card .small {
-  font-size: 0.78rem;
-  color: var(--text-light);
+  font-size: 0.75rem;
+  color: var(--text-dim);
   letter-spacing: 0.5px;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 /* ===========================
@@ -451,15 +505,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .room-table thead th {
-  background: var(--navy);
-  color: var(--white);
-  font-family: "IBM Plex Sans", sans-serif;
+  background: var(--black-surface);
+  color: var(--green);
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   padding: 16px 24px;
   border: none;
+  border-bottom: 1px solid var(--border-green);
 }
 
 .room-table tbody td {
@@ -468,18 +523,20 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--border);
   font-size: 0.9rem;
   color: var(--text-secondary);
+  background: var(--black-card);
 }
 
 .room-badge {
   display: inline-block;
-  background: var(--navy);
-  color: var(--gold);
-  font-family: "IBM Plex Sans", sans-serif;
+  background: transparent;
+  color: var(--green);
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 600;
-  padding: 4px 14px;
+  padding: 4px 12px;
+  border: 1px solid var(--border-green);
   border-radius: 0;
   font-size: 0.82rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 /* ===========================
@@ -510,18 +567,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .accordion-button:not(.collapsed) {
   background-color: transparent;
-  color: var(--text-primary);
+  color: var(--green);
   box-shadow: none;
-}
-
-.accordion-button:not(.collapsed)::after {
-  filter: none;
 }
 
 .accordion-button::after {
   width: 12px;
   height: 12px;
   background-size: 12px;
+  filter: invert(0.5);
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: invert(0.6) sepia(1) saturate(5) hue-rotate(90deg);
 }
 
 .accordion-button:focus {
@@ -540,56 +598,54 @@ h1, h2, h3, h4, h5, h6 {
    Footer
    =========================== */
 .footer-section {
-  background: var(--navy-dark);
-  color: var(--white);
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
   padding: 60px 0;
 }
 
-.footer-section p {
-  font-size: 0.82rem;
-  letter-spacing: 1px;
-}
-
 .footer-section .fw-bold {
-  font-family: "IBM Plex Serif", serif;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
 }
 
 .footer-section a {
   text-decoration: none;
+  color: var(--green);
   transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-  color: var(--gold-light) !important;
+  color: var(--green-dim) !important;
+  text-shadow: 0 0 8px var(--green-glow);
 }
 
 /* ===========================
-   Scrollbar (subtle)
+   Scrollbar
    =========================== */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--off-white);
+  background: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--black-surface);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: var(--text-dim);
 }
 
 /* ===========================
    Selection
    =========================== */
 ::selection {
-  background: var(--gold);
-  color: var(--white);
+  background: var(--green);
+  color: var(--black);
 }
