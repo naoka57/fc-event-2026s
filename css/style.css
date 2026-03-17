@@ -412,7 +412,13 @@ h1, h2, h3, h4, h5, h6 {
 /* ===========================
    Venue Section
    =========================== */
-.venue-image-placeholder,
+.venue-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border);
+}
+
 .map-placeholder {
   background: var(--black-card);
   border: 1px solid var(--border);
@@ -422,11 +428,10 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   color: var(--text-dim);
-  min-height: 320px;
+  min-height: 200px;
   font-size: 0.85rem;
 }
 
-.venue-image-placeholder i,
 .map-placeholder i {
   font-size: 2rem;
   margin-bottom: 12px;
