@@ -101,7 +101,7 @@ nav.topnav {
 }
 
 /* Hero */
-.hero { padding: 90px 0 70px; }
+.hero { padding: 90px 0 40px; }
 .hero-label {
   display: inline-flex;
   align-items: center;
@@ -199,7 +199,7 @@ nav.topnav {
 }
 
 /* Sections */
-section { padding: 100px 0; }
+section { padding: 80px 0; }
 .section-head { margin-bottom: 52px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
 .section-label {
   display: inline-flex;
@@ -224,11 +224,17 @@ section { padding: 100px 0; }
 /* About */
 .about-intro {
   max-width: 720px;
-  margin: 0 auto 56px;
-  text-align: center;
+  margin: 0 0 56px;
 }
-.about-intro p { font-size: 1.08rem; line-height: 2; color: var(--ink-2); }
-.about-intro p + p { color: var(--ink-3); font-size: 1rem; margin-top: 16px; }
+.about-intro .lead {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin-bottom: 20px;
+}
+.about-intro p:not(.lead) { font-size: 1rem; line-height: 2; color: var(--ink-3); }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
 .card { padding: 40px 28px; border-right: 1px solid var(--border); transition: background 0.2s; }
 .card:last-child { border-right: none; }
@@ -465,7 +471,8 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
   .hero-date .sep { font-size: 1.5rem; }
   .hero-date .day { font-size: 0.7rem; }
   .hero-venue-tag { font-size: 0.7rem; }
-  section { padding: 70px 0; }
+  section { padding: 60px 0; }
+  .about-intro .lead { font-size: 1.15rem; }
   .section-title { font-size: 1.7rem; }
   .container { padding: 0 20px; }
   .about-intro p { font-size: 0.98rem; line-height: 1.9; }
@@ -548,11 +555,10 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
         <div class="section-label">About</div>
         <h2 class="section-title">合宿について</h2>
       </div>
-      <p class="section-lead">同じ志を持つ起業家同士が深いレベルでつながり、次のブレイクスルーへの道筋を見出す。</p>
     </div>
     <div class="about-intro">
-      <p>DeepTech Founders Campは、HERO Impact Capitalが主催するディープテック起業家のための完全招待制合宿プログラムです。</p>
-      <p>2日間の集中プログラムを通じて、同じ志を持つ起業家同士が深いレベルでつながり、互いの知見を交換し、次のブレイクスルーへの道筋を見出します。</p>
+      <p class="lead">同じ志を持つ起業家同士が深いレベルでつながり、次のブレイクスルーへの道筋を見出す2日間。</p>
+      <p>DeepTech Founders Campは、HERO Impact Capitalが主催するディープテック起業家のための完全招待制合宿プログラムです。集中プログラムを通じて、創業者同士が知見を交換し、事業の次なるステージへの具体的なアクションプランを描きます。</p>
     </div>
     <div class="cards">
       <div class="card">
