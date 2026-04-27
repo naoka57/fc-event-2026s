@@ -144,17 +144,25 @@ nav.topnav {
 }
 .countdown .num { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-left: 4px; }
 .countdown .accent { color: var(--accent-dark); font-weight: 700; }
+.hero-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin: 8px 0 36px;
+  padding-top: 20px;
+  border-top: 2px solid var(--accent);
+  flex-wrap: wrap;
+}
 .hero-date {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--ink);
-  margin: 8px 0 36px;
-  padding-top: 18px;
-  border-top: 2px solid var(--accent);
+  margin: 0;
 }
 .hero-date .sep {
   color: var(--accent-dark);
@@ -162,12 +170,31 @@ nav.topnav {
   font-size: 1.4rem;
 }
 .hero-date .day {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+.hero-venue-tag {
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--ink-3);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-left: 2px;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-venue-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 /* Sections */
@@ -432,9 +459,11 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
   .hero { padding: 60px 0 50px; }
   .hero-title { font-size: 3rem; margin-bottom: 28px; }
   .hero-subtitle { font-size: 1rem; }
-  .hero-date { font-size: 1.15rem; gap: 10px; padding-top: 14px; margin: 4px 0 24px; flex-wrap: wrap; }
+  .hero-date-row { padding-top: 14px; margin: 4px 0 24px; gap: 12px; }
+  .hero-date { font-size: 1.15rem; gap: 10px; flex-wrap: wrap; }
   .hero-date .sep { font-size: 1rem; }
   .hero-date .day { font-size: 0.7rem; }
+  .hero-venue-tag { font-size: 0.7rem; }
   section { padding: 70px 0; }
   .section-title { font-size: 1.7rem; }
   .container { padding: 0 20px; }
@@ -501,7 +530,10 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
       <span class="line">Founders</span>
       <span class="line">Camp<span class="accent-dot">.</span></span>
     </h1>
-    <p class="hero-date">2026.05.16 <span class="sep">→</span> 05.17 <span class="day">Sat—Sun</span></p>
+    <div class="hero-date-row">
+      <p class="hero-date">2026.05.16 <span class="sep">→</span> 05.17 <span class="day">Sat—Sun</span></p>
+      <p class="hero-venue-tag">LIME RESORT HAKONE / 箱根・仙石原</p>
+    </div>
     <p class="hero-subtitle">完全招待制の2日間。DeepTech創業者が箱根・仙石原に集い、事業・技術・資本の未来を語る。</p>
     <div class="countdown" id="countdown"></div>
   </div>
