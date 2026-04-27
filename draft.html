@@ -145,12 +145,14 @@ nav.topnav {
 .countdown .num { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-left: 4px; }
 .countdown .accent { color: var(--accent-dark); font-weight: 700; }
 .hero-date-row {
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 22px;
-  margin: 12px 0 16px;
-  padding-top: 16px;
+  gap: 24px;
+  margin: 12px 0 36px;
+  padding-top: 18px;
   border-top: 2px solid var(--ink);
+  flex-wrap: wrap;
 }
 .hero-date {
   display: inline-flex;
@@ -182,8 +184,8 @@ nav.topnav {
   color: var(--ink-3);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin: 0 0 36px;
-  display: flex;
+  margin: 0;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 }
@@ -458,11 +460,11 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
   .hero { padding: 60px 0 50px; }
   .hero-title { font-size: 3rem; margin-bottom: 28px; }
   .hero-subtitle { font-size: 1rem; }
-  .hero-date-row { padding-top: 12px; margin: 8px 0 14px; gap: 12px; }
+  .hero-date-row { padding-top: 12px; margin: 8px 0 28px; gap: 12px; }
   .hero-date { font-size: 1.8rem; gap: 8px; flex-wrap: wrap; letter-spacing: -0.02em; }
   .hero-date .sep { font-size: 1.5rem; }
   .hero-date .day { font-size: 0.7rem; }
-  .hero-venue-tag { font-size: 0.7rem; margin-bottom: 28px; }
+  .hero-venue-tag { font-size: 0.7rem; }
   section { padding: 70px 0; }
   .section-title { font-size: 1.7rem; }
   .container { padding: 0 20px; }
@@ -531,8 +533,8 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
     </h1>
     <div class="hero-date-row">
       <p class="hero-date">2026.05.16 <span class="sep">—</span> 05.17 <span class="day">Sat—Sun</span></p>
+      <p class="hero-venue-tag">LIME RESORT HAKONE / 箱根・仙石原</p>
     </div>
-    <p class="hero-venue-tag">LIME RESORT HAKONE / 箱根・仙石原</p>
     <p class="hero-subtitle">完全招待制の2日間。DeepTech創業者が箱根・仙石原に集い、事業・技術・資本の未来を語る。</p>
     <div class="countdown" id="countdown"></div>
   </div>
