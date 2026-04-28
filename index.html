@@ -1,614 +1,989 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepTech Founders Camp</title>
-  <meta name="theme-color" content="#0a0a0a">
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- AOS.js CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="css/style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepTech Founders Camp 2026</title>
+<meta name="theme-color" content="#0FE6A5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-alt: #F6F7F8;
+  --bg-card: #FFFFFF;
+  --ink: #0A0A0A;
+  --ink-2: #333333;
+  --ink-3: #6B7280;
+  --ink-4: #A0A6AE;
+  --accent: #0FE6A5;
+  --accent-dark: #0AB77E;
+  --border: #E5E7EB;
+  --border-strong: #0A0A0A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Inter", "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 42px;
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+a { color: inherit; }
+
+/* Wi-Fi Bar (fixed top) */
+.wifi-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1100;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 10px 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.wifi-bar .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+.wifi-bar strong { color: var(--accent); font-weight: 600; letter-spacing: 0.05em; }
+.wifi-bar .sep { opacity: 0.3; }
+
+/* Nav */
+nav.topnav {
+  padding: 18px 0;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 42px;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.logo-mark {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.nav-links { display: flex; gap: 28px; font-size: 0.88rem; font-weight: 500; }
+.nav-links a { color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Hero */
+.hero { padding: 90px 0 40px; }
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+}
+.hero-label::before { content: ""; width: 24px; height: 1px; background: var(--ink-3); }
+.hero-title {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero-title .line { display: block; }
+.hero-title .accent-dot { color: var(--accent); }
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--ink-2);
+  max-width: 620px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+.countdown {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--ink-3);
+  margin-bottom: 40px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.countdown .num { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-left: 4px; }
+.countdown .accent { color: var(--accent-dark); font-weight: 700; }
+.hero-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin: 12px 0 36px;
+  padding-top: 18px;
+  border-top: 2px solid var(--ink);
+  flex-wrap: wrap;
+}
+.hero-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1;
+}
+.hero-date .sep {
+  color: var(--accent-dark);
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+.hero-date .day {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+.hero-venue-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-venue-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Sections */
+section { padding: 80px 0; }
+.section-head { margin-bottom: 52px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 14px;
+}
+.section-label::before { content: ""; width: 20px; height: 1px; background: var(--ink-3); }
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.section-lead { font-size: 1rem; color: var(--ink-3); max-width: 380px; line-height: 1.75; }
+
+/* About */
+.about-intro {
+  max-width: 720px;
+  margin: 0 0 56px;
+}
+.about-intro .lead {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin-bottom: 20px;
+}
+.about-intro p:not(.lead) { font-size: 1rem; line-height: 2; color: var(--ink-3); }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
+.card { padding: 40px 28px; border-right: 1px solid var(--border); transition: background 0.2s; }
+.card:last-child { border-right: none; }
+.card:hover { background: var(--bg-alt); }
+.card-num { font-size: 0.78rem; font-weight: 600; color: var(--accent-dark); letter-spacing: 0.08em; margin-bottom: 14px; }
+.card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+.card p { font-size: 0.94rem; color: var(--ink-2); line-height: 1.75; }
+
+/* Schedule */
+.schedule-section { background: var(--bg-alt); }
+.schedule-tabs { display: inline-flex; background: var(--ink); padding: 4px; border-radius: 999px; margin-bottom: 40px; }
+.tab {
+  padding: 10px 26px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+}
+.tab.active { background: var(--accent); color: var(--ink); }
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+.schedule-list { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.sch-item {
+  display: grid;
+  grid-template-columns: 100px 1fr 220px;
+  gap: 24px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background 0.2s;
+}
+.sch-item:last-child { border-bottom: none; }
+.sch-item:hover { background: var(--bg-alt); }
+.sch-time { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+.sch-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 2px; letter-spacing: -0.005em; }
+.sch-content .desc { font-size: 0.86rem; color: var(--ink-3); }
+.sch-place {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  justify-self: end;
+}
+.sch-place::before { content: "●"; color: var(--accent); font-size: 0.55rem; }
+.sch-place.muted::before { color: var(--ink-4); }
+
+/* Venue */
+.venue-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.venue-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+.venue-info h3 { font-size: 1.9rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
+.venue-description { color: var(--ink-2); line-height: 1.9; margin-bottom: 28px; font-size: 0.95rem; }
+.venue-info .info-table { width: 100%; }
+.info-table .row { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+.info-table .row:last-child { border-bottom: none; }
+.info-table .key { font-weight: 600; color: var(--ink-3); font-size: 0.82rem; letter-spacing: 0.04em; }
+.info-table .val { font-weight: 500; }
+
+/* Access */
+.access-section { margin-top: 80px; }
+.access-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 40px 36px; }
+.access-inner { margin-top: 20px; }
+.access-col h5 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.access-col ul { list-style: none; }
+.access-col ul li { padding: 8px 0 8px 16px; border-left: 2px solid var(--border); margin-left: 4px; font-size: 0.9rem; color: var(--ink-2); }
+.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 20px; }
+.access-note { font-size: 0.82rem; color: var(--ink-3); margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--border); }
+
+/* Amenities */
+.amenities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.amenity-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.amenity-card:hover { border-color: var(--ink); }
+.amenity-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.amenity-card h4 i { color: var(--accent-dark); font-size: 1.1rem; }
+.amenity-list { list-style: none; }
+.amenity-list li {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  padding: 7px 0;
+  padding-left: 16px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.amenity-list li:last-child { border-bottom: none; }
+.amenity-list li::before {
+  content: "—";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+}
+.amenities-note { font-size: 0.85rem; color: var(--ink-3); margin-top: 24px; text-align: center; }
+
+/* Participants */
+.participants-note { font-size: 0.88rem; color: var(--ink-3); margin-bottom: 32px; text-align: center; }
+.participants-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.participant-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 20px 16px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.participant-card:hover { border-color: var(--ink); }
+.participant-card h5 { font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+.participant-card .org { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
+.participant-card .room {
+  font-size: 0.78rem;
+  color: var(--accent-dark);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.participant-card.show .room {
+  max-height: 40px;
+  opacity: 1;
+}
+
+/* FAQ */
+.faq-section { background: var(--bg-alt); }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.faq-q .arrow { color: var(--accent-dark); transition: transform 0.2s; font-size: 0.85rem; }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: var(--ink-2);
+  font-size: 0.94rem;
+  line-height: 1.9;
+}
+.faq-item.open .faq-a { max-height: 500px; padding-bottom: 22px; }
+
+/* Footer */
+footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: var(--ink); color: #fff; }
+.footer-brand { margin-bottom: 40px; }
+.footer-brand p:first-child { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.footer-brand p:first-child .accent { color: var(--accent); }
+.footer-brand p:last-child { font-size: 0.85rem; color: #9BA0A8; }
+.footer-contacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-contact .label {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer-contact .value { font-size: 0.9rem; }
+.footer-contact .value a { color: #fff; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.3); }
+.footer-contact .value a:hover { color: var(--accent); }
+.footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #6B7280; text-align: center; }
+
+@media (max-width: 768px) {
+  body { padding-top: 54px; }
+  .wifi-bar { font-size: 0.72rem; padding: 8px 16px; gap: 8px; }
+  .wifi-bar .sep { display: none; }
+  .hero { padding: 60px 0 50px; }
+  .hero-title { font-size: 3rem; margin-bottom: 28px; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-date-row { padding-top: 12px; margin: 8px 0 28px; gap: 12px; }
+  .hero-date { font-size: 1.8rem; gap: 8px; flex-wrap: wrap; letter-spacing: -0.02em; }
+  .hero-date .sep { font-size: 1.5rem; }
+  .hero-date .day { font-size: 0.7rem; }
+  .hero-venue-tag { font-size: 0.7rem; }
+  section { padding: 60px 0; }
+  .about-intro .lead { font-size: 1.15rem; }
+  .section-title { font-size: 1.7rem; }
+  .container { padding: 0 20px; }
+  .about-intro p { font-size: 0.98rem; line-height: 1.9; }
+  .cards { grid-template-columns: 1fr; }
+  .card { border-right: none; border-bottom: 1px solid var(--border); }
+  .sch-item { grid-template-columns: 1fr; gap: 6px; padding: 18px 20px; }
+  .sch-place { justify-self: start; }
+  .venue-grid { grid-template-columns: 1fr; gap: 30px; }
+  .access-grid { grid-template-columns: 1fr; gap: 24px; }
+  .access-wrap { padding: 28px 20px; }
+  .amenities-grid { grid-template-columns: 1fr; }
+  .participants-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-contacts { grid-template-columns: 1fr; gap: 18px; }
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 14px;
+  }
+  .nav-links.open { display: flex; }
+}
+</style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+<body>
 
-  <!-- ===== Wi-Fi Bar ===== -->
-  <div class="wifi-bar">
-// Wi-Fi <span class="wifi-sep">/</span> SSID: LIME-HAKONE-GUEST <span class="wifi-sep">/</span> PW: b/h7XKU8mw
+<!-- Wi-Fi Bar -->
+<div class="wifi-bar">
+  <span class="dot"></span>
+  <span><strong>Wi-Fi</strong> SSID: LIME-HAKONE-GUEST</span>
+  <span class="sep">/</span>
+  <span>PW: b/h7XKU8mw</span>
+</div>
+
+<!-- Navigation -->
+<nav class="topnav">
+  <div class="container nav-inner">
+    <a class="logo" href="#top"><span class="logo-mark"></span>DeepTech Founders Camp</a>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><i class="bi bi-list"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">概要</a>
+      <a href="#schedule">スケジュール</a>
+      <a href="#venue">会場</a>
+      <a href="#amenities">設備・備品</a>
+      <a href="#participants">参加者</a>
+      <a href="#faq">FAQ</a>
+    </div>
   </div>
+</nav>
 
-  <!-- ===== Navigation ===== -->
-  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Founders<span class="text-green">Camp</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#hero">Top</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
-          <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
-          <li class="nav-item"><a class="nav-link" href="#participants">Participants</a></li>
-          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+<!-- Hero -->
+<section id="top" class="hero">
+  <div class="container">
+    <div class="hero-label">HERO Impact Capital</div>
+    <h1 class="hero-title">
+      <span class="line">DeepTech</span>
+      <span class="line">Founders</span>
+      <span class="line">Camp<span class="accent-dot">.</span></span>
+    </h1>
+    <div class="hero-date-row">
+      <p class="hero-date">2026.05.16 <span class="sep">—</span> 05.17 <span class="day">Sat—Sun</span></p>
+      <p class="hero-venue-tag">LIME RESORT HAKONE / 箱根・仙石原</p>
+    </div>
+    <p class="hero-subtitle">完全招待制の2日間。DeepTech創業者が箱根・仙石原に集い、事業・技術・資本の未来を語る。</p>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">About</div>
+        <h2 class="section-title">合宿について</h2>
+      </div>
+    </div>
+    <div class="about-intro">
+      <p class="lead">同じ志を持つ起業家同士が深いレベルでつながり、次のブレイクスルーへの道筋を見出す2日間。</p>
+      <p>DeepTech Founders Campは、HERO Impact Capitalが主催するディープテック起業家のための完全招待制合宿プログラムです。集中プログラムを通じて、創業者同士が知見を交換し、事業の次なるステージへの具体的なアクションプランを描きます。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01 / CONNECTION</div>
+        <h3>Deep Connection</h3>
+        <p>厳選された起業家が集まり、通常のネットワーキングでは得られない深い関係性を構築します。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02 / INSIGHT</div>
+        <h3>Insight Exchange</h3>
+        <p>各分野のフロントランナーによるセッションと、参加者同士のディスカッションで新たな視点を獲得します。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03 / BREAKTHROUGH</div>
+        <h3>Next Breakthrough</h3>
+        <p>合宿での体験を通じて、事業の次なるステージへの具体的なアクションプランを描きます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section id="schedule" class="schedule-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Schedule</div>
+        <h2 class="section-title">プログラム</h2>
+      </div>
+      <div class="schedule-tabs" role="tablist">
+        <button class="tab active" data-tab="day1">DAY 1 — 05.16 Sat</button>
+        <button class="tab" data-tab="day2">DAY 2 — 05.17 Sun</button>
+      </div>
+    </div>
+
+    <div id="day1" class="tab-pane active">
+      <div class="schedule-list">
+        <div class="sch-item">
+          <div class="sch-time">08:00</div>
+          <div class="sch-content"><h4>集合 / 出発</h4><div class="desc">神谷町駅集合・荷物積み込み</div></div>
+          <div class="sch-place">神谷町駅</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">09:30</div>
+          <div class="sch-content"><h4>休憩</h4><div class="desc">約20分</div></div>
+          <div class="sch-place muted">海老名SA</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">11:00</div>
+          <div class="sch-content"><h4>POLA美術館 / ランチ</h4><div class="desc">美術鑑賞 & ランチ（約3時間）</div></div>
+          <div class="sch-place">POLA美術館</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">14:30</div>
+          <div class="sch-content"><h4>ライムリゾート着 / チェックイン</h4><div class="desc"></div></div>
+          <div class="sch-place">ライムリゾート箱根</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">15:00</div>
+          <div class="sch-content"><h4>先輩DeepTechの現在地と未来</h4><div class="desc">セッション</div></div>
+          <div class="sch-place">メインホール</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">16:00</div>
+          <div class="sch-content"><h4>DeepTechのIPO戦略と資本政策 2026</h4><div class="desc">セッション（60min）</div></div>
+          <div class="sch-place">メインホール</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">17:00</div>
+          <div class="sch-content"><h4>分科会（3セッション並行）</h4><div class="desc">組織 / 超エンプラ営業 / ロビーイング（各40min）</div></div>
+          <div class="sch-place">各会議室</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">18:00</div>
+          <div class="sch-content"><h4>ディナー</h4><div class="desc"></div></div>
+          <div class="sch-place">ダイニング</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">20:00</div>
+          <div class="sch-content"><h4>TOP NDA Session</h4><div class="desc">クローズドセッション（〜21:00）</div></div>
+          <div class="sch-place">ラウンジ</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day2" class="tab-pane">
+      <div class="schedule-list">
+        <div class="sch-item">
+          <div class="sch-time">08:00</div>
+          <div class="sch-content"><h4>Morning</h4><div class="desc">朝食 & フリータイム</div></div>
+          <div class="sch-place">ダイニング</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">09:00</div>
+          <div class="sch-content"><h4>Best Pitch 大解説</h4><div class="desc">セッション（90min）</div></div>
+          <div class="sch-place">メインホール</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">10:30</div>
+          <div class="sch-content"><h4>Closing</h4><div class="desc">振り返り & ネクストステップ</div></div>
+          <div class="sch-place">メインホール</div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">11:00</div>
+          <div class="sch-content"><h4>温泉 / Lunch</h4><div class="desc">リラックスタイム & 解散</div></div>
+          <div class="sch-place">大浴場・ダイニング</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Venue -->
+<section id="venue">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Venue</div>
+        <h2 class="section-title">会場</h2>
+      </div>
+    </div>
+    <div class="venue-grid">
+      <img src="img/venue-main.jpg" alt="ライムリゾート箱根" class="venue-img">
+      <div class="venue-info">
+        <h3>ライムリゾート箱根</h3>
+        <p class="venue-description">「合宿型コミュニケーション空間」をコンセプトに設計されたリゾート施設。身体的にアイデアが浮かびやすくなるよう考え抜かれた建築空間で、天然温泉・ラウンジ・シアター・暖炉などを備えています。</p>
+        <div class="info-table">
+          <div class="row"><div class="key">住所</div><div class="val">〒250-0631 神奈川県足柄下郡箱根町仙石原1246-845</div></div>
+          <div class="row"><div class="key">Wi-Fi</div><div class="val">全館完備</div></div>
+          <div class="row"><div class="key">駐車場</div><div class="val">25台（無料）</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Access -->
+    <div class="access-section">
+      <div class="section-head" style="margin-bottom: 28px;">
+        <div>
+          <div class="section-label">Access</div>
+          <h2 class="section-title" style="font-size: 1.7rem;">アクセス</h2>
+        </div>
+        <div class="schedule-tabs" role="tablist">
+          <button class="tab active" data-tab="bus">バス集合組</button>
+          <button class="tab" data-tab="direct">現地直行組</button>
+        </div>
+      </div>
+
+      <div id="bus" class="tab-pane active">
+        <div class="access-wrap">
+          <div class="schedule-list" style="box-shadow: none;">
+            <div class="sch-item">
+              <div class="sch-time">08:00</div>
+              <div class="sch-content"><h4>神谷町駅 集合</h4><div class="desc">荷物積み込み後、バスで出発</div></div>
+              <div class="sch-place">神谷町駅</div>
+            </div>
+            <div class="sch-item">
+              <div class="sch-time">09:30</div>
+              <div class="sch-content"><h4>海老名SA 休憩</h4><div class="desc">約20分</div></div>
+              <div class="sch-place muted">海老名SA</div>
+            </div>
+            <div class="sch-item">
+              <div class="sch-time">11:00</div>
+              <div class="sch-content"><h4>POLA美術館 到着</h4><div class="desc">美術鑑賞 & ランチ</div></div>
+              <div class="sch-place">POLA美術館</div>
+            </div>
+            <div class="sch-item">
+              <div class="sch-time">14:30</div>
+              <div class="sch-content"><h4>ライムリゾート箱根 到着</h4><div class="desc">チェックイン</div></div>
+              <div class="sch-place">ライムリゾート箱根</div>
+            </div>
+          </div>
+          <p class="access-note">* 集合場所の詳細は別途ご連絡します</p>
+        </div>
+      </div>
+
+      <div id="direct" class="tab-pane">
+        <div class="access-wrap">
+          <p style="font-size: 0.95rem; margin-bottom: 6px;">14:30までにライムリゾート箱根へ直接お越しください。</p>
+          <div class="access-grid">
+            <div class="access-col">
+              <h5><i class="bi bi-train-front"></i>電車の場合</h5>
+              <ul>
+                <li>新宿 → 箱根湯本（小田急ロマンスカー 約85分）</li>
+                <li>箱根湯本駅 → 箱根登山バス（桃源台線）</li>
+                <li>「南仙石原」下車 → 徒歩3分</li>
+              </ul>
+            </div>
+            <div class="access-col">
+              <h5><i class="bi bi-car-front"></i>車の場合</h5>
+              <ul>
+                <li>東名高速 → 御殿場IC</li>
+                <li>国道138号線で仙石原方面へ</li>
+                <li>駐車場あり（25台・無料）</li>
+              </ul>
+            </div>
+          </div>
+          <p class="access-note">* 直行の方はPOLA美術館ランチには参加できません。昼食は各自お済ませください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+<section id="amenities" class="schedule-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Amenities</div>
+        <h2 class="section-title">設備・備品</h2>
+      </div>
+      <p class="section-lead">会場に用意されているもの／ご自身で用意が必要なもの。</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <h4><i class="bi bi-droplet"></i>バスルーム</h4>
+        <ul class="amenity-list">
+          <li>フェイスタオル / バスタオル</li>
+          <li>シャンプー / コンディショナー</li>
+          <li>ボディソープ</li>
+          <li>歯ブラシ / 歯磨き粉</li>
+          <li>ヘアブラシ</li>
+          <li>ドライヤー</li>
+        </ul>
+      </div>
+      <div class="amenity-card">
+        <h4><i class="bi bi-house"></i>客室備品</h4>
+        <ul class="amenity-list">
+          <li>ルームウェア（館内着）</li>
+          <li>スリッパ</li>
+          <li>セーフティボックス</li>
+          <li>TV（40インチ）/ ポータブルスピーカー</li>
+          <li>電気ケトル / マグカップ</li>
+          <li>冷蔵庫</li>
+        </ul>
+      </div>
+      <div class="amenity-card">
+        <h4><i class="bi bi-building"></i>共用施設</h4>
+        <ul class="amenity-list">
+          <li>大浴場（天然温泉・男女別）</li>
+          <li>ラウンジ（暖炉付き）</li>
+          <li>シアター（150インチスクリーン）</li>
+          <li>Wi-Fi（全館）</li>
+          <li>駐車場（25台・無料）</li>
+          <li>コーヒーマシン / ウォーターサーバー</li>
         </ul>
       </div>
     </div>
-  </nav>
+    <p class="amenities-note">* パジャマ・着替え・充電器などはご持参ください</p>
+  </div>
+</section>
 
-  <!-- ===== 1. Hero ===== -->
-  <section id="hero" class="hero-section d-flex align-items-center">
-    <div class="hero-overlay"></div>
-    <div class="container text-center position-relative" data-aos="fade-up" data-aos-duration="1200">
-      <p class="hero-label mb-4">// HERO Impact Capital presents</p>
-      <h1 class="hero-title">Deep<span class="accent">Tech</span><br>Founders Camp</h1>
-      <div class="hero-divider mx-auto my-5"></div>
-      <p class="hero-date">
-        2026.05.16 sat — 05.17 sun
-      </p>
-      <p class="hero-venue-text mt-2">
-        LIME RESORT HAKONE — Sengokuhara
-      </p>
-      <div class="hero-countdown mt-5" id="countdown"></div>
-      <a href="#about" class="btn btn-primary-custom mt-4"><span>Enter</span></a>
-    </div>
-  </section>
-
-  <!-- ===== 2. About ===== -->
-  <section id="about" class="section-padding">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// About</h2>
-        <div class="section-divider mx-auto"></div>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-          <p class="text-center mb-2" style="font-size: 1.15rem; line-height: 2; color: var(--text-primary);">
-            DeepTech Founders Camp は、HERO Impact Capital が主催する<br class="d-none d-lg-inline">ディープテック起業家のための完全招待制合宿プログラムです。
-          </p>
-          <p class="text-center mb-5" style="color: var(--text-secondary); font-size: 1rem; line-height: 2;">
-            2日間の集中プログラムを通じて、同じ志を持つ起業家同士が<br class="d-none d-lg-inline">深いレベルでつながり、互いの知見を交換し、次のブレイクスルーへの道筋を見出します。
-          </p>
-        </div>
-      </div>
-      <div class="row g-4 mt-2">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="about-card text-center p-5">
-            <div class="about-icon mb-3">
-              <i class="bi bi-people"></i>
-            </div>
-            <h5 class="mb-3">Deep Connection</h5>
-            <p class="mb-0">厳選された起業家が集まり、通常のネットワーキングでは得られない深い関係性を構築します。</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="about-card text-center p-5">
-            <div class="about-icon mb-3">
-              <i class="bi bi-cpu"></i>
-            </div>
-            <h5 class="mb-3">Insight Exchange</h5>
-            <p class="mb-0">各分野のフロントランナーによるセッションと、参加者同士のディスカッションで新たな視点を獲得します。</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="about-card text-center p-5">
-            <div class="about-icon mb-3">
-              <i class="bi bi-arrow-up-right"></i>
-            </div>
-            <h5 class="mb-3">Next Breakthrough</h5>
-            <p class="mb-0">合宿での体験を通じて、事業の次なるステージへの具体的なアクションプランを描きます。</p>
-          </div>
-        </div>
+<!-- Participants -->
+<section id="participants">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Participants</div>
+        <h2 class="section-title">参加者</h2>
       </div>
     </div>
-  </section>
-
-  <!-- ===== 3. Schedule ===== -->
-  <section id="schedule" class="section-padding bg-dark-section">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// Schedule</h2>
-        <div class="section-divider mx-auto"></div>
+    <p class="participants-note">カードをタップすると部屋番号が表示されます</p>
+    <div class="participants-grid">
+      <div class="participant-card">
+        <h5>田中 太郎</h5>
+        <p class="org">QuantumLeap Inc. / CEO</p>
+        <p class="room">Room 201</p>
       </div>
-
-      <!-- Tab Nav -->
-      <ul class="nav nav-pills schedule-tabs justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
-        <li class="nav-item">
-          <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#day1">
-            <span class="d-block fw-bold">Day 1</span>
-            <small>05.16 Sat</small>
-          </button>
-        </li>
-        <li class="nav-item ms-3">
-          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#day2">
-            <span class="d-block fw-bold">Day 2</span>
-            <small>05.17 Sun</small>
-          </button>
-        </li>
-      </ul>
-
-      <!-- Tab Content -->
-      <div class="tab-content">
-        <!-- Day 1 -->
-        <div class="tab-pane fade show active" id="day1">
-          <div class="schedule-timeline" data-aos="fade-up" data-aos-delay="200">
-            <div class="schedule-item">
-              <div class="schedule-time">08:00</div>
-              <div class="schedule-content">
-                <h5>集合 &amp; 出発</h5>
-                <p class="text-muted small mb-0">神谷町駅 集合・荷物積み</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">09:30</div>
-              <div class="schedule-content">
-                <h5>休憩</h5>
-                <p class="text-muted small mb-0">海老名SA</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">11:00</div>
-              <div class="schedule-content">
-                <h5>POLA美術館 ランチ</h5>
-                <p class="text-muted small mb-0">美術鑑賞 &amp; ランチ（約3時間）</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">14:30</div>
-              <div class="schedule-content">
-                <h5>ライムリゾート着 チェックイン</h5>
-                <p class="text-muted small mb-0"></p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">15:00</div>
-              <div class="schedule-content">
-                <h5>先輩DeepTechの現在地と未来</h5>
-                <p class="text-muted small mb-0">セッション</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">16:00</div>
-              <div class="schedule-content">
-                <h5>DeepTechのIPO戦略と資本政策 2026</h5>
-                <p class="text-muted small mb-0">セッション（60min）</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">17:00</div>
-              <div class="schedule-content">
-                <h5>分科会（3セッション並行）</h5>
-                <p class="text-muted small mb-0">組織 / 超エンプラ営業 / ロビーイング（各40min）</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">18:00</div>
-              <div class="schedule-content">
-                <h5>ディナー</h5>
-                <p class="text-muted small mb-0"></p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">20:00</div>
-              <div class="schedule-content">
-                <h5>TOP NDA Session</h5>
-                <p class="text-muted small mb-0">クローズドセッション（〜21:00）</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 2 -->
-        <div class="tab-pane fade" id="day2">
-          <div class="schedule-timeline" data-aos="fade-up">
-            <div class="schedule-item">
-              <div class="schedule-time">08:00</div>
-              <div class="schedule-content">
-                <h5>Morning</h5>
-                <p class="text-muted small mb-0">朝食 &amp; フリータイム</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">09:00</div>
-              <div class="schedule-content">
-                <h5>Best Pitch 大解説</h5>
-                <p class="text-muted small mb-0">セッション（90min）</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">10:30</div>
-              <div class="schedule-content">
-                <h5>Closing</h5>
-                <p class="text-muted small mb-0">振り返り &amp; ネクストステップ</p>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">11:00</div>
-              <div class="schedule-content">
-                <h5>温泉 &amp; Lunch</h5>
-                <p class="text-muted small mb-0">リラックスタイム &amp; 解散</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="participant-card">
+        <h5>鈴木 花子</h5>
+        <p class="org">BioSynth Labs / Co-Founder</p>
+        <p class="room">Room 203</p>
+      </div>
+      <div class="participant-card">
+        <h5>佐藤 健一</h5>
+        <p class="org">NanoMaterials Co. / CTO</p>
+        <p class="room">Room 201</p>
+      </div>
+      <div class="participant-card">
+        <h5>山田 美咲</h5>
+        <p class="org">SpaceForge / Founder</p>
+        <p class="room">Room 204</p>
+      </div>
+      <div class="participant-card">
+        <h5>高橋 亮太</h5>
+        <p class="org">FusionTech / CEO</p>
+        <p class="room">Room 202</p>
+      </div>
+      <div class="participant-card">
+        <h5>伊藤 沙織</h5>
+        <p class="org">DeepOcean AI / Co-Founder</p>
+        <p class="room">Room 205</p>
+      </div>
+      <div class="participant-card">
+        <h5>渡辺 大輝</h5>
+        <p class="org">PhotonX / Founder</p>
+        <p class="room">Room 202</p>
+      </div>
+      <div class="participant-card">
+        <h5>中村 恵理</h5>
+        <p class="org">GreenHydrogen / CEO</p>
+        <p class="room">Room 205</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== 4. Venue ===== -->
-  <section id="venue" class="section-padding">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// Venue</h2>
-        <div class="section-divider mx-auto"></div>
-      </div>
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <img src="img/venue-main.jpg" alt="ライムリゾート箱根 ラウンジ" class="venue-image">
-        </div>
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="mb-4">ライムリゾート箱根</h3>
-          <p style="color: var(--text-primary); line-height: 2; font-size: 1rem;">
-            「合宿型コミュニケーション空間」をコンセプトに設計されたリゾート施設。身体的にアイデアが浮かびやすくなるよう考え抜かれた建築空間で、天然温泉・ラウンジ・シアター・暖炉などを備えています。
-          </p>
-          <ul class="venue-info list-unstyled mt-4">
-            <li class="mb-3">
-              <i class="bi bi-geo-alt text-green me-3"></i>
-              <span>〒250-0631 神奈川県足柄下郡箱根町仙石原1246-845</span>
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-wifi text-green me-3"></i>
-              <span>全館 Wi-Fi 完備 / 駐車場25台（無料）</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Access Tabs -->
-      <div class="mt-5" data-aos="fade-up">
-        <h4 class="text-center mb-4" style="font-family: 'IBM Plex Mono', monospace; color: var(--green); font-size: 1rem; letter-spacing: 2px;">// Access</h4>
-        <ul class="nav nav-pills schedule-tabs justify-content-center mb-4">
-          <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#access-bus">
-              <span class="d-block fw-bold"><i class="bi bi-bus-front me-2"></i>バス集合組</span>
-              <small>神谷町駅から出発</small>
-            </button>
-          </li>
-          <li class="nav-item ms-3">
-            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#access-direct">
-              <span class="d-block fw-bold"><i class="bi bi-signpost-split me-2"></i>現地直行組</span>
-              <small>電車 or 車</small>
-            </button>
-          </li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane fade show active" id="access-bus">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="access-card p-4">
-                  <div class="schedule-timeline">
-                    <div class="schedule-item">
-                      <div class="schedule-time">08:00</div>
-                      <div class="schedule-content">
-                        <h5>神谷町駅 集合</h5>
-                        <p class="text-muted small mb-0">荷物積み込み後、バスで出発</p>
-                      </div>
-                    </div>
-                    <div class="schedule-item">
-                      <div class="schedule-time">09:30</div>
-                      <div class="schedule-content">
-                        <h5>海老名SA 休憩</h5>
-                        <p class="text-muted small mb-0">約20分</p>
-                      </div>
-                    </div>
-                    <div class="schedule-item">
-                      <div class="schedule-time">11:00</div>
-                      <div class="schedule-content">
-                        <h5>POLA美術館 到着</h5>
-                        <p class="text-muted small mb-0">美術鑑賞 &amp; ランチ</p>
-                      </div>
-                    </div>
-                    <div class="schedule-item">
-                      <div class="schedule-time">14:30</div>
-                      <div class="schedule-content">
-                        <h5>ライムリゾート箱根 到着</h5>
-                        <p class="text-muted small mb-0">チェックイン</p>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0" style="color: var(--text-dim); font-size: 0.82rem;">* 集合場所の詳細は別途ご連絡します</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="access-direct">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="access-card p-4">
-                  <p class="mb-3" style="color: var(--text-primary); font-size: 0.95rem;">14:30までにライムリゾート箱根へ直接お越しください。</p>
-                  <div class="row g-4">
-                    <div class="col-md-6">
-                      <h6 style="font-family: 'IBM Plex Mono', monospace; color: var(--green); font-size: 0.85rem;"><i class="bi bi-train-front me-2"></i>電車の場合</h6>
-                      <ul class="venue-info list-unstyled">
-                        <li class="mb-2"><span>新宿 → 箱根湯本（小田急ロマンスカー 約85分）</span></li>
-                        <li class="mb-2"><span>箱根湯本駅 → 箱根登山バス（桃源台線）</span></li>
-                        <li class="mb-2"><span>「南仙石原」下車 → 徒歩3分</span></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <h6 style="font-family: 'IBM Plex Mono', monospace; color: var(--green); font-size: 0.85rem;"><i class="bi bi-car-front me-2"></i>車の場合</h6>
-                      <ul class="venue-info list-unstyled">
-                        <li class="mb-2"><span>東名高速 → 御殿場IC</span></li>
-                        <li class="mb-2"><span>国道138号線で仙石原方面へ</span></li>
-                        <li class="mb-2"><span>駐車場あり（25台・無料）</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0" style="color: var(--text-dim); font-size: 0.82rem;">* 直行の方はPOLA美術館ランチには参加できません。昼食は各自お済ませください。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="section-head" style="justify-content: center;">
+      <div style="text-align: center;">
+        <div class="section-label" style="justify-content: center;">FAQ</div>
+        <h2 class="section-title">よくあるご質問</h2>
       </div>
     </div>
-  </section>
-
-  <!-- ===== Amenities ===== -->
-  <section id="amenities" class="section-padding bg-dark-section">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// Amenities</h2>
-        <div class="section-divider mx-auto"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">服装はどのような格好が良いですか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>カジュアルな服装でお越しください。セッション中もリラックスした雰囲気で進行します。散歩やアクティビティに参加される方は動きやすい靴もお持ちください。</p></div>
       </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="amenity-card p-4">
-            <h5 class="mb-3"><i class="bi bi-droplet text-green me-2"></i>バスルーム</h5>
-            <ul class="amenity-list">
-              <li>フェイスタオル / バスタオル</li>
-              <li>シャンプー / コンディショナー</li>
-              <li>ボディソープ</li>
-              <li>歯ブラシ / 歯磨き粉</li>
-              <li>ヘアブラシ</li>
-              <li>ドライヤー</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="amenity-card p-4">
-            <h5 class="mb-3"><i class="bi bi-house text-green me-2"></i>客室備品</h5>
-            <ul class="amenity-list">
-              <li>ルームウェア（館内着）</li>
-              <li>スリッパ</li>
-              <li>セーフティボックス</li>
-              <li>TV（40インチ）/ ポータブルスピーカー</li>
-              <li>電気ケトル / マグカップ</li>
-              <li>冷蔵庫</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="amenity-card p-4">
-            <h5 class="mb-3"><i class="bi bi-building text-green me-2"></i>共用施設</h5>
-            <ul class="amenity-list">
-              <li>大浴場（天然温泉・男女別）</li>
-              <li>ラウンジ（暖炉付き）</li>
-              <li>シアター（150インチスクリーン）</li>
-              <li>Wi-Fi（全館）SSID: <span style="color: var(--green);">LIME-HAKONE-GUEST</span> / PW: <span style="color: var(--green);">b/h7XKU8mw</span></li>
-              <li>駐車場（25台・無料）</li>
-              <li>コーヒーマシン / ウォーターサーバー</li>
-            </ul>
-          </div>
-        </div>
+      <div class="faq-item">
+        <button class="faq-q">持ち物は何が必要ですか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>宿泊に必要なアメニティ（タオル・歯ブラシ等）は会場に用意されています。ノートPC、名刺、着替えをお持ちください。温泉がありますので、必要な方は水着もご持参ください。</p></div>
       </div>
-      <p class="text-center mt-4" style="color: var(--text-dim); font-size: 0.82rem;">
-        * パジャマ・着替え・充電器などはご持参ください
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== 5. Participants ===== -->
-  <section id="participants" class="section-padding bg-surface">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// Participants</h2>
-        <div class="section-divider mx-auto"></div>
+      <div class="faq-item">
+        <button class="faq-q">食事のアレルギー対応はできますか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>はい、対応可能です。アレルギーや食事制限がある方は、事前に事務局までお知らせください。ベジタリアン・ヴィーガン対応も可能です。</p></div>
       </div>
-      <p class="text-center mb-4" style="color: var(--text-dim); font-size: 0.82rem;">* カードをタップすると部屋番号が表示されます</p>
-      <div class="row g-3 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="participant-card text-center" data-room="201">
-            <h6 class="mb-1">田中 太郎</h6>
-            <p class="small mb-0">QuantumLeap Inc. / CEO</p>
-            <p class="room-reveal small">Room 201</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
-          <div class="participant-card text-center" data-room="203">
-            <h6 class="mb-1">鈴木 花子</h6>
-            <p class="small mb-0">BioSynth Labs / Co-Founder</p>
-            <p class="room-reveal small">Room 203</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="participant-card text-center" data-room="201">
-            <h6 class="mb-1">佐藤 健一</h6>
-            <p class="small mb-0">NanoMaterials Co. / CTO</p>
-            <p class="room-reveal small">Room 201</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="250">
-          <div class="participant-card text-center" data-room="204">
-            <h6 class="mb-1">山田 美咲</h6>
-            <p class="small mb-0">SpaceForge / Founder</p>
-            <p class="room-reveal small">Room 204</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="participant-card text-center" data-room="202">
-            <h6 class="mb-1">高橋 亮太</h6>
-            <p class="small mb-0">FusionTech / CEO</p>
-            <p class="room-reveal small">Room 202</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="350">
-          <div class="participant-card text-center" data-room="205">
-            <h6 class="mb-1">伊藤 沙織</h6>
-            <p class="small mb-0">DeepOcean AI / Co-Founder</p>
-            <p class="room-reveal small">Room 205</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-          <div class="participant-card text-center" data-room="202">
-            <h6 class="mb-1">渡辺 大輝</h6>
-            <p class="small mb-0">PhotonX / Founder</p>
-            <p class="room-reveal small">Room 202</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="450">
-          <div class="participant-card text-center" data-room="205">
-            <h6 class="mb-1">中村 恵理</h6>
-            <p class="small mb-0">GreenHydrogen / CEO</p>
-            <p class="room-reveal small">Room 205</p>
-          </div>
-        </div>
+      <div class="faq-item">
+        <button class="faq-q">途中参加・途中退出は可能ですか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>できる限り全プログラムへのご参加をお願いしておりますが、やむを得ない事情がある場合は事前にご相談ください。送迎バスの時刻以外でのアクセスについてもご案内いたします。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">お酒や飲み物の持ち込みはできますか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>お飲み物の持ち込みは無料ですが、グラスの貸し出しは有料となります。事前にグラスの貸し出しご希望をお申し付けください。紙コップなどをご用意いただくことをおすすめします。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">参加費はかかりますか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>宿泊費・食事代を含め、参加費は無料です。会場までの交通費は各自ご負担ください。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">写真やSNSへの投稿は可能ですか？<span class="arrow">▼</span></button>
+        <div class="faq-a"><p>クローズドイベントのため、セッション内容の詳細な公開はお控えください。会場の風景や集合写真などは、参加者の同意を得た上で投稿可能です。詳細はオープニングセッションでご案内します。</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== 7. FAQ ===== -->
-  <section id="faq" class="section-padding bg-surface">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="section-label-heading">// FAQ</h2>
-        <div class="section-divider mx-auto"></div>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <p>HERO <span class="accent">Impact Capital</span> — Founders Camp 2026</p>
+      <p>Spring Retreat · Hakone Sengokuhara</p>
+    </div>
+    <div class="footer-contacts">
+      <div class="footer-contact">
+        <div class="label">Emergency / 事務局</div>
+        <div class="value"><a href="tel:090-0000-0000">090-0000-0000</a></div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-          <div class="accordion" id="faqAccordion">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                  服装はどのような格好が良いですか？
-                </button>
-              </h2>
-              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  カジュアルな服装でお越しください。セッション中もリラックスした雰囲気で進行します。散歩やアクティビティに参加される方は動きやすい靴もお持ちください。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                  持ち物は何が必要ですか？
-                </button>
-              </h2>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  宿泊に必要なアメニティ（タオル・歯ブラシ等）は会場に用意されています。ノートPC、名刺、着替えをお持ちください。温泉がありますので、必要な方は水着もご持参ください。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                  食事のアレルギー対応はできますか？
-                </button>
-              </h2>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  はい、対応可能です。アレルギーや食事制限がある方は、事前に事務局までお知らせください。ベジタリアン・ヴィーガン対応も可能です。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                  途中参加・途中退出は可能ですか？
-                </button>
-              </h2>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  できる限り全プログラムへのご参加をお願いしておりますが、やむを得ない事情がある場合は事前にご相談ください。送迎バスの時刻以外でのアクセスについてもご案内いたします。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-drink">
-                  お酒や飲み物の持ち込みはできますか？
-                </button>
-              </h2>
-              <div id="faq-drink" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  お飲み物の持ち込みは無料ですが、グラスの貸し出しは有料となります。事前にグラスの貸し出しご希望をお申し付けください。紙コップなどをご用意いただくことをおすすめします。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                  参加費はかかりますか？
-                </button>
-              </h2>
-              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  宿泊費・食事代を含め、参加費は無料です。会場までの交通費は各自ご負担ください。
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                  写真や SNS への投稿は可能ですか？
-                </button>
-              </h2>
-              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  クローズドイベントのため、セッション内容の詳細な公開はお控えください。会場の風景や集合写真などは、参加者の同意を得た上で投稿可能です。詳細はオープニングセッションでご案内します。
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="footer-contact">
+        <div class="label">Contact</div>
+        <div class="value"><a href="mailto:camp@example.com">camp@example.com</a></div>
+      </div>
+      <div class="footer-contact">
+        <div class="label">Venue</div>
+        <div class="value">ライムリゾート箱根<br><a href="tel:0460-00-0000">0460-00-0000</a></div>
       </div>
     </div>
-  </section>
+    <p class="footer-copyright">© 2026 HERO Impact Capital. All rights reserved.</p>
+  </div>
+</footer>
 
-  <!-- ===== Footer ===== -->
-  <footer class="footer-section">
-    <div class="container text-center">
-      <p class="mb-2 fw-bold">Founders<span class="text-green">Camp</span></p>
-      <p class="small mb-3" style="color: var(--text-dim);">Hosted by HERO Impact Capital</p>
-      <div class="row justify-content-center mt-4 g-4">
-        <div class="col-auto">
-          <p class="small mb-1" style="color: var(--green);">// Emergency</p>
-          <p class="small mb-0" style="color: var(--text-secondary);">事務局: <a href="tel:090-0000-0000">090-0000-0000</a></p>
-        </div>
-        <div class="col-auto">
-          <p class="small mb-1" style="color: var(--green);">// Contact</p>
-          <p class="small mb-0" style="color: var(--text-secondary);"><a href="mailto:camp@example.com">camp@example.com</a></p>
-        </div>
-        <div class="col-auto">
-          <p class="small mb-1" style="color: var(--green);">// Venue</p>
-          <p class="small mb-0" style="color: var(--text-secondary);">ライムリゾート箱根: <a href="tel:0460-00-0000">0460-00-0000</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+<script>
+// Countdown
+(function() {
+  const target = new Date('2026-05-16T08:00:00+09:00').getTime();
+  const el = document.getElementById('countdown');
+  function update() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) { el.textContent = '開催中'; return; }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    el.innerHTML = `開催まで<span class="num accent">${days}</span><span>日</span>`;
+  }
+  update();
+  setInterval(update, 60000);
+})();
 
-  <!-- Bootstrap 5 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS.js -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <!-- Custom JS -->
-  <script src="js/main.js"></script>
+// Tabs (works for schedule and access)
+document.querySelectorAll('.schedule-tabs').forEach(group => {
+  const tabs = group.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      // Find sibling panes — look at parent section's tab-panes
+      const scope = group.closest('section') || group.closest('.access-section') || document;
+      const targetPane = scope.querySelector('#' + targetId);
+      if (!targetPane) return;
+      // Determine sibling panes (same parent as target)
+      const parent = targetPane.parentElement;
+      parent.querySelectorAll(':scope > .tab-pane').forEach(p => p.classList.remove('active'));
+      targetPane.classList.add('active');
+    });
+  });
+});
+
+// Participant cards - click to reveal room
+document.querySelectorAll('.participant-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('show'));
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  });
+});
+
+// Mobile nav toggle
+document.getElementById('navToggle')?.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+</script>
+
 </body>
 </html>
