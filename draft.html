@@ -296,15 +296,9 @@ section { padding: 80px 0; }
 .venue-img {
   width: 100%;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.4);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  font-size: 0.9rem;
+  object-fit: cover;
+  display: block;
 }
 .venue-info h3 { font-size: 1.9rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
 .venue-description { color: var(--ink-2); line-height: 1.9; margin-bottom: 28px; font-size: 0.95rem; }
@@ -681,7 +675,7 @@ footer { padding: 60px 0 40px; border-top: 1px solid var(--border); background: 
       </div>
     </div>
     <div class="venue-grid">
-      <div class="venue-img">LIME RESORT HAKONE</div>
+      <img src="img/venue-main.jpg" alt="ライムリゾート箱根" class="venue-img">
       <div class="venue-info">
         <h3>ライムリゾート箱根</h3>
         <p class="venue-description">「合宿型コミュニケーション空間」をコンセプトに設計されたリゾート施設。身体的にアイデアが浮かびやすくなるよう考え抜かれた建築空間で、天然温泉・ラウンジ・シアター・暖炉などを備えています。</p>
